@@ -1,0 +1,5 @@
+# Files generated from TeX editor #
+
+*.aux
+*.log
+*.synctex.gz
