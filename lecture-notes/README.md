@@ -1,0 +1,1 @@
+Each folder contains the notes for a single lecture.
