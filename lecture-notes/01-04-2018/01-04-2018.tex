@@ -1,0 +1,63 @@
+\documentclass[11pt, oneside]{article} 
+\usepackage[margin=0.75in]{geometry}              		
+\geometry{letterpaper}
+
+\usepackage[parfill]{parskip} 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\title{CSC236 Week 1 - Introductory Lecture}
+\author{Cristyn Howard}
+\date{January 4, 2018}
+
+\begin{document}
+
+\maketitle
+
+\begin{itemize}
+\item \underline{predicate:} statement about a set of variables
+	\begin{itemize}
+	\item Ex] O(n): n is a natural number; \hspace{15pt} $O:\mathbb{N}\rightarrow$ Boolean
+	\item Ex] D(a,b): a divides b; \hspace{15pt} $D:\mathbb{N}\times\mathbb{N}\rightarrow$ Boolean
+	\item predicates may have infinitely many variables
+	\item in this course, we will mostly be focused on unary predicates
+	\end{itemize}
+	
+\item \underline{Simple Induction:}
+	\begin{itemize} 
+	\item \underline{base case} - P(x); predicate is true for some natural number x
+		\begin{itemize}
+		\item often, x is 0, however some problems have a base case other than 0
+		\end{itemize}
+	\item \underline{induction} - $\forall k \in \mathbb{N},\:P(k)\rightarrow P(k+1)$
+	\item If P is true for the first element in an ordered set, and we know that P being true for any arbitrary element means that it is true for the next element, then we can conclude that P is true for all elements in the ordered set.
+	\item \emph{Principle of Simple Induction (PSI):} $[P(0) \land [\forall k \in \mathbb{N},\:P(k)\rightarrow P(k+1)] ] \rightarrow \forall n \in \mathbb{N},\: P(n)$
+	\end{itemize}
+
+\item Writing proofs with simple induction:
+	\begin{enumerate}
+	\item Define predicate.
+	\item Prove base case.
+	\item Set up and prove induction step.
+	\item Reference PSI, state conclusions.
+	\end{enumerate}
+	
+\item \emph{Example of simple induction problem:}
+	\begin{quote}
+	Let $ \{ a_0, a_1, ...\}$ be a sequence of natural numbers such that $a_0 = 1$, and $\forall n \geq 1, \: a_n = 2a_{n-1}+1$. Prove that $\forall n \in \mathbb{N},\: a_n = 2^{n+1}-1$.
+	\end{quote}
+	\vspace{5pt}
+	
+	\begin{quote}
+	\underline{Define predicate:} Let $P(n): a_n = 2^{n+1}-1$. Must show that $\forall n \in \mathbb{N},\: P(n)$. \\
+	\underline{Base case:}  $n=0, P(0): 2^{0+1}-1 = 2^1-1 = 2-1 = 1 = a_0$, therefore P(0) is true. \\
+	\underline{Induction step:} Assume P(k) is true for some arbitrary $k \in \mathbb{N}$, so we have $a_k = 2^{k+1}-1$. \\
+	From definition $a_n = 2a_{n-1}+1$, we get $a_{k+1} = 2a_k+1 = 2(2^{k+1}-1)+1 = 2^{k+2}-2+1=2^{k+2}-1$, and thus $P(k+1): a_{k+1}=2^{k+2}-1$ is true. Thus assuming P(k) gives us P(k+1), so $P(k) \rightarrow P(k+1)$. \\
+	\underline{Reference PSI, state conclusions:} We have $P(0) \land [\forall k \in \mathbb{N},\:P(k)\rightarrow P(k+1)] $, so via PSI we can conclude that $\forall n \in \mathbb{N},\: P(n)$.
+	\end{quote}
+
+\end{itemize}
+
+\end{document}
