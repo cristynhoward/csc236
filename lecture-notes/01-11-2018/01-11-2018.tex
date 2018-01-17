@@ -1,0 +1,94 @@
+\documentclass[12pt, oneside]{article} 
+\usepackage[letterpaper, margin=0.5in]{geometry}        		
+\geometry{letterpaper}
+\usepackage[parfill]{parskip} 
+\usepackage{framed}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{qtree}
+\usepackage{makecell}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+    % \abs & \norm resizes brackets, starred version doesn't
+    \makeatletter
+    \let\oldabs\abs
+    \def\abs{\@ifstar{\oldabs}{\oldabs*}}
+    %
+    \let\oldnorm\norm
+    \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+    \makeatother
+    
+\newcommand\tab[1][0.15cm]{\hspace*{#1}}
+\newcommand\imp{\rightarrow}
+\newcommand\thfr{\tab \therefore \tab}
+\newcommand\sameas{\tab \equiv \tab}
+
+\title{CSC236 - Week 2}
+\author{Cristyn Howard}
+\date{Thursday, January 11, 2018}
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+\item [Ex.] Prove that $\forall n \in \{\mathbb{N} \setminus\{ 0, 1, 2, 3, 4\}\}, \: n > 4, \: 2^n > n^2$
+
+	\begin{itemize}
+	\item Notation: Let $\mathbb{N}_{n>4} \equiv \{\mathbb{N} \setminus\{ 0, 1, 2, 3, 4\}\}$
+	\item Let $P(n):  2^n>n^2.$
+	
+	\item Base case $n=5$: \tab $2^5 = 32 > 25 = 5^2 \tab \therefore P(5) = true.$
+	\end{itemize} \vspace{0.7em}
+	
+\begin{leftbar}
+\item [Note:] $\mathbb{N}_{n>4}$ is an infinite countable set. We can use a non-zero base case (e.g. 5) and use induction to prove that our predicate is true over an infinite countable subset of $\mathbb{N}$. \end{leftbar} \vspace{0.7em}
+
+	\begin{itemize}
+	\item Assume $p(k)$ holds for some arbitrary $k \in \mathbb{N}_{n>4} \thfr 2^k>k^2$.
+		
+		\begin{itemize}
+		\item We have $2^k>k^2 \thfr 2\cdot 2^k>2k^2 \sameas$ \framebox{$2^{k+1} > 2k^2$}
+		
+		\item Note that $[[2^{k+1} > 2k^2] \land [2k^2 > (k+1)^2] \imp [P(k+1): 2^{k+1} > (k+1)^2]]$. So if we can show that $2k^2 > (k+1)^2$, we can conclude $P(k) \imp P(k+1)$.
+		
+		\item $2k^2 > (k+1)^2 \sameas 2k^2 > k^2 + 2k + 1 \sameas k^2 > 2k+1$ \newline
+			$k^2 > 2k+1 \sameas k^2-2k-1>0 \sameas k^2-2k+1>2 \sameas (k-1)^2 > 2$
+			
+		\item $k \in \mathbb{N}_{n>4} \imp k > 4 \thfr (k-1)^2 > (4-1)^2 = 3^2 = 9 > 2 \thfr  (k-1)^2 > 2 = true$ 
+		
+		\item \framebox{$(k-1)^2 > 2 = true$}  $\imp$  
+			\framebox{$ 2k^2 > (k+1)^2 = true$} $\imp$  
+			\framebox{$ [P(k) \imp P(k+1)]= true$}
+		\end{itemize}
+		
+		So we have shown that $P(k) \imp P(k+1)$.
+		
+	\item $P(5) \land [\: \forall k \in \mathbb{N}_{n>4}, \: P(k) \imp P(k+1)], \thfr$ by principle of simple induction, we can conclude that $\forall n \in\mathbb{N}_{n>4}, \: P(n)$.	
+	\end{itemize}
+	
+\item [Ex.] Suppose that $h_0, h_1, h_2...$ is a sequence defined as follows: \newline
+	\hspace{2em} $h_0 = 1$; \hspace{2em} $h_1 = 2$; \hspace{2em} $h_2 = 3$; \hspace{2em} 
+	$h_k = h_{k-1} + h_{k-2} + h_{k-3} \:\:\: \forall k \in \mathbb{Z}, \: k \geq 3$. \newline
+	Prove that $\forall n \in \mathbb{N}, h_n \leq 3^n$.
+	
+	\begin{itemize}
+	\item Let $P(n):  h_n \leq 3^n.$
+	
+	\item Base case $n=0$: $h_n = 1 \leq 1 = 3^0 = 3^n$. \newline
+	Base case $n=1$: $h_n = 2 \leq 3 = 3^1 = 3^n$. \newline
+	Base case $n=2$: $h_n = 3 \leq 9 = 3^3 = 3^n$.
+	
+	\item Let k be some arbitrary $k \in \mathbb{N}$. Assume 
+	\end{itemize}
+
+\end{itemize}
+
+
+
+
+\end{document}
